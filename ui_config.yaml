@@ -1,0 +1,4 @@
+- type: button
+  text: 00-ServerIdCenter
+  script: /home/ubuntu/Projects/try_auto_deploy/00-ServerIdCenter.py
+  
