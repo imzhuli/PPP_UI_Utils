@@ -1,4 +1,24 @@
 - type: button
   text: 00-ServerIdCenter
   script: /home/ubuntu/Projects/try_auto_deploy/00-ServerIdCenter.py
+  column: 0
+  row: 0
+  
+- type: button
+  text: 00-ConfigCenter
+  script: /home/ubuntu/Projects/try_auto_deploy/01-s_config_center.py
+  column: 1
+  row: 0
+  
+- type: button
+  text: 99-AddressTest
+  script: /home/ubuntu/Projects/try_auto_deploy/99-s_address_test.py
+  column: 0
+  row: 3
+    
+- type: button
+  text: A0-X-Device
+  script: /home/ubuntu/Projects/try_auto_deploy/a0-x_device.py
+  column: 1
+  row: 3
   

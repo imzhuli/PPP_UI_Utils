@@ -20,6 +20,9 @@ ui_config = "./ui_config.yaml"
 remote_host = "ubuntu@zhuli.cool"
 remote_key_entry = os.path.expanduser("~/.ssh/id_rsa")
 
+ui_root = tk.Tk()
+ui_root.geometry("720x480")
+ui_root.resizable(False, False)
 
 def load_ui():
     with open(ui_config) as config_contents:
@@ -74,8 +77,6 @@ def worker(remote_python_script = "/home/ubuntu/Tmp/hw.py", remote_host = "ubunt
     
 
 # ui interface
-ui_root = tk.Tk()
-ui_root.geometry("720x480")
 ui_root.bind("<<generic_interrupt>>", generic_event_check)
 ui_root.attributes('-topmost', True)
 ui_frame = ttk.Frame(ui_root, padding=10)
