@@ -21,10 +21,18 @@ remote_host = "ubuntu@zhuli.cool"
 remote_key_entry = os.path.expanduser("~/.ssh/id_rsa")
 
 ui_root = tk.Tk()
-ui_root.geometry("720x480")
 ui_root.resizable(False, False)
+# ui_root.attributes('-topmost', True)
+
+ui_text = tk.Text(ui_root, wrap=tk.CHAR, height=45, width=250, state="disabled")
+ui_text.pack(padx=10, pady=10)
+
+ui_frame = ttk.Frame(ui_root, padding=10)
+ui_frame.pack()
+ui_queue = Queue()
 
 def load_ui():
+
     with open(ui_config) as config_contents:
         yd = yaml.safe_load(config_contents)
         if type(yd) != list:
@@ -35,7 +43,7 @@ def load_ui():
                 continue
             if item["type"] == "button":
                 btn = my_button.generate_with(ui_frame, item)
-                btn.config(command=lambda: worker(item["script"]))
+                btn.config(command=lambda item=item: worker(item["script"]))
                 all_buttons.append(btn)
             if item["type"] == "label":
                 lb = my_text.generate_with(ui_frame, item)
@@ -50,15 +58,21 @@ def enable_all_buttons():
     for btn in all_buttons:
         btn.state(['!disabled'])
 
+def append_text(txt):
+    current_end = ui_text.index("end-1c")
+    ui_text.config(state="normal")
+    ui_text.insert(current_end, txt)
+    ui_text.config(state="disabled")
+    ui_text.see("end")
 
 def generic_event_check(event):
     while ui_queue.qsize() > 0:
         qitem = ui_queue.get()
         if qitem.out is None:
-            print(f"done: {qitem.exit_code}")
+            append_text(f"done: {qitem.exit_code}")
             enable_all_buttons()
         else:
-            print(qitem.out, end='')
+            append_text(qitem.out)
     pass
 
 
@@ -78,11 +92,6 @@ def worker(remote_python_script = "/home/ubuntu/Tmp/hw.py", remote_host = "ubunt
 
 # ui interface
 ui_root.bind("<<generic_interrupt>>", generic_event_check)
-ui_root.attributes('-topmost', True)
-ui_frame = ttk.Frame(ui_root, padding=10)
-ui_frame.grid()
-
-ui_queue = Queue()
 
 
 if __name__ == "__main__":
