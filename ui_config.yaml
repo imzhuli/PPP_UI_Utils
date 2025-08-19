@@ -33,17 +33,17 @@
   text: 98-ServerListDownloader
   script: /home/ubuntu/Projects/try_auto_deploy/98-t_server_list_downloader.py
   row: 9
-  column: 1
+  column: 0
 
 - type: button
   text: 99-AddressTest
   script: /home/ubuntu/Projects/try_auto_deploy/99-s_address_test.py
   row: 9
-  column: 2
+  column: 1
     
 - type: button
   text: A0-X-Device
   script: /home/ubuntu/Projects/try_auto_deploy/a0-x_device.py
-  row: 9
-  column: 3
+  row: 10
+  column: 0
   
