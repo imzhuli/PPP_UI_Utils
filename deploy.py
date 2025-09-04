@@ -69,7 +69,7 @@ def generic_event_check(event):
     while ui_queue.qsize() > 0:
         qitem = ui_queue.get()
         if qitem.out is None:
-            append_text(f"done: {qitem.exit_code}")
+            append_text(f"done: {qitem.exit_code}\n")
             enable_all_buttons()
         else:
             append_text(qitem.out)

@@ -1,49 +1,49 @@
 - type: button
   text: 00-ServerIdCenter
-  script: /home/ubuntu/Projects/try_auto_deploy/00-s_server_id_center.py
+  script: /home/ubuntu/Projects/try_auto_deploy/00-s_server_id_center.py -o test_assets/server.override/ts_tm
   row: 0
   column: 0
   
 - type: button
   text: 01-ConfigCenter
-  script: /home/ubuntu/Projects/try_auto_deploy/01-s_config_center.py
+  script: /home/ubuntu/Projects/try_auto_deploy/01-s_config_center.py -o test_assets/server.override/ts_tm
   row: 0
   column: 1
   
 - type: button
   text: 02-ServerList
-  script: /home/ubuntu/Projects/try_auto_deploy/02-s_server_list.py
+  script: /home/ubuntu/Projects/try_auto_deploy/02-s_server_list.py -o test_assets/server.override/ts_tm
   row: 0
   column: 2
 
 - type: button
   text: 09-RelayInfoDispatcher
-  script: /home/ubuntu/Projects/try_auto_deploy/09-s_relay_info_dispatcher.py
+  script: /home/ubuntu/Projects/try_auto_deploy/09-s_relay_info_dispatcher.py -o test_assets/server.override/ts_tm
   row: 1
   column: 0 
 
 - type: button
   text: 10-DeviceRelay
-  script: /home/ubuntu/Projects/try_auto_deploy/10-s_device_relay.py
+  script: /home/ubuntu/Projects/try_auto_deploy/10-s_device_relay.py -o test_assets/server.override/ts_tm
   row: 1
   column: 1 
   
 
 - type: button
   text: 98-ServerListDownloader
-  script: /home/ubuntu/Projects/try_auto_deploy/98-t_server_list_downloader.py
+  script: /home/ubuntu/Projects/try_auto_deploy/98-t_server_list_downloader.py -o test_assets/server.override/ts_tm
   row: 9
   column: 0
 
 - type: button
   text: 99-AddressTest
-  script: /home/ubuntu/Projects/try_auto_deploy/99-s_address_test.py
+  script: /home/ubuntu/Projects/try_auto_deploy/99-s_address_test.py -o test_assets/server.override/ts_tm
   row: 9
   column: 1
     
 - type: button
   text: A0-X-Device
-  script: /home/ubuntu/Projects/try_auto_deploy/a0-x_device.py
+  script: /home/ubuntu/Projects/try_auto_deploy/a0-x_device.py -o test_assets/server.override/ts_tm
   row: 10
   column: 0
-  
+    

@@ -29,8 +29,14 @@ def pick_path_quoted(src_filename):
 
 def remote_run(poster, remote_python_script = "", remote_host = "zhuli.cool", remote_port=22, remote_user = "ubuntu", rsa_key_path=os.path.expanduser("~/.ssh/id_rsa")):
 
-    remote_dir = pick_path_quoted(remote_python_script)
-    remote_name = pick_name(remote_python_script)
+    command = shlex.split(remote_python_script)
+    script_path = command[0]
+    params = command[1::]
+    for i,v in enumerate(params):
+        params[i] = shlex.quote(v)
+
+    remote_dir = pick_path_quoted(script_path)
+    remote_name = pick_name(script_path)
 
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -41,7 +47,7 @@ def remote_run(poster, remote_python_script = "", remote_host = "zhuli.cool", re
     channel  = transport.open_session()
     channel .get_pty()  # 分配伪终端（某些命令需要）
 
-    channel.exec_command(f"cd {remote_dir} && python3 {remote_name}")
+    channel.exec_command(f"cd {remote_dir} && python3 {remote_name} {" ".join(params)}")
 
     undecoded = b""
     while True:
