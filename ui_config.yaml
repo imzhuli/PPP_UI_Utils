@@ -28,6 +28,11 @@
   row: 1
   column: 1 
   
+- type: button
+  text: 12-AuthServer
+  script: /home/ubuntu/Projects/try_auto_deploy/12-s_auth_cache.py -o test_assets/server.override/ts_tm
+  row: 1
+  column: 2 
 
 - type: button
   text: 98-ServerListDownloader
